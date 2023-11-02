@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/SearchContainer.css';
+import Gallery from './Gallery';
 
 class SearchContainer extends Component {
   state = {
@@ -55,7 +56,7 @@ class SearchContainer extends Component {
       .then((data) => {
         const photos = data.photos.photo;
         if (photos.length === 0) {
-            this.openModal('Нет результатов для вашего запроса.');
+          this.openModal('Нет результатов для вашего запроса.');
         }
         const galleryItems = photos.map((photo) => ({
           imageUrl: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
@@ -112,13 +113,7 @@ class SearchContainer extends Component {
           </span>
         </div>
 
-        <div className="gallery">
-          {galleryItems.map((item, index) => (
-            <div className="gallery-item" key={index}>
-              <img src={item.imageUrl} alt={item.imageAlt} />
-            </div>
-          ))}
-        </div>
+        <Gallery galleryItems={galleryItems} />
       </div>
     );
   }
