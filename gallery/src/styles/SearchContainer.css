@@ -26,3 +26,14 @@
 #search-button:hover {
     scale: 1.1;
 }
+
+#clear-input:hover {
+    color: black;
+}
+
+#clear-input {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+}

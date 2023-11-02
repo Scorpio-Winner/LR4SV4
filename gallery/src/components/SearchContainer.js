@@ -4,12 +4,22 @@ import '../styles/SearchContainer.css';
 class SearchContainer extends Component {
   state = {
     searchText: '',
-    galleryItems: []
+    galleryItems: [],
+    showModal: false,
+    modalMessage: '',
   };
 
   componentDidMount() {
     this.getRandomPhotos();
   }
+
+  openModal = (message) => {
+    this.setState({ showModal: true, modalMessage: message });
+  };
+
+  closeModal = () => {
+    this.setState({ showModal: false });
+  };
 
   getRandomPhotos = () => {
     const { apiUrl, apiKey } = this.props;
@@ -45,7 +55,7 @@ class SearchContainer extends Component {
       .then((data) => {
         const photos = data.photos.photo;
         if (photos.length === 0) {
-          console.log('Нет результатов для вашего запроса.');
+            this.openModal('Нет результатов для вашего запроса.');
         }
         const galleryItems = photos.map((photo) => ({
           imageUrl: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
