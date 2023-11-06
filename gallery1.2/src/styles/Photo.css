@@ -1,0 +1,24 @@
+.Photo {
+    flex-basis: calc(33.33% - 20px);
+    box-sizing: border-box;
+    width: auto;
+    height: 300px;
+    min-width: 300px;
+    max-width: 20vw;
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.Photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Photo:hover {
+    scale: 1.2;
+    transition: 0.5s;
+    z-index: 999;
+}
