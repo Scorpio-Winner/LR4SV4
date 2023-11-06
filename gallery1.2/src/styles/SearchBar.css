@@ -1,11 +1,11 @@
 .SearchBar {
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 80%;
 }
 
 #search-input {
-    background-color: #edf5e1;
+    background-color: white;
     flex-grow: 1;
     padding: 10px;
     font-size: 16px;
@@ -22,7 +22,7 @@
     padding: 10px 20px;
     font-size: 16px;
     text-transform: capitalize;
-    background-color: #f64c72;
+    background-color: #0074d9;
     color: white;
     border: none;
     border-radius: 5px;
@@ -36,7 +36,7 @@
 
 #search-input::-webkit-search-cancel-button {
     content: "×";
-    background-color: #f64c72;
+    color: #0074d9;
     font-size: 16px;
 }
 

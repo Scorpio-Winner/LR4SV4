@@ -4,8 +4,8 @@ import '../styles/Header.css';
 
 class Header extends React.Component {
     render() {
-        return <header className='header'>
-            <h1>Image gallery</h1>
+        return <header className='Header'>
+            <h1>Галерея изображений</h1>
         </header>
     }
 }
