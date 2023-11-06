@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/SearchContainer.css';
 import Gallery from './Gallery';
+import Modal from './Modal';
 
 class SearchContainer extends Component {
   state = {
@@ -44,24 +45,26 @@ class SearchContainer extends Component {
   searchPhotos = () => {
     const { apiUrl, apiKey } = this.props;
     const { searchText } = this.state;
-
+  
     if (searchText.trim() === '') {
       return;
     }
-
+  
     fetch(
       `${apiUrl}?method=flickr.photos.search&api_key=${apiKey}&text=${searchText}&per_page=12&format=json&nojsoncallback=1&safe_search=1`
     )
       .then((response) => response.json())
       .then((data) => {
         const photos = data.photos.photo;
-        if (photos.length === 0) {
-          this.openModal('Нет результатов для вашего запроса.');
-        }
         const galleryItems = photos.map((photo) => ({
           imageUrl: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
           imageAlt: photo.title,
         }));
+  
+        if (photos.length === 0) {
+          this.openModal('Нет результатов для вашего запроса.');
+        }
+  
         this.setState({ galleryItems });
       })
       .catch((error) => {
@@ -88,7 +91,7 @@ class SearchContainer extends Component {
   };
 
   render() {
-    const { galleryItems } = this.state;
+    const { galleryItems, showModal, modalMessage } = this.state;
 
     return (
       <div>
@@ -114,6 +117,7 @@ class SearchContainer extends Component {
         </div>
 
         <Gallery galleryItems={galleryItems} />
+        <Modal message={modalMessage} closeModal={this.closeModal} />
       </div>
     );
   }
