@@ -14,7 +14,7 @@ class Gallery extends React.Component {
             <Photo currentImage={image} key={image.id} />
         );
 
-        const message = this.props.images.length === 0 ? <p>No photos</p> : <></>;
+        const message = this.props.images.length === 0 ? <p>Нет результатов</p> : <></>;
 
         return (
             <div className='Gallery'>
