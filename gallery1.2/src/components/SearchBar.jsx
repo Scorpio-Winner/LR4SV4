@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
 
         try {
             if (request === '') {
-                response = await fetch(`${apiUrl}?method=flickr.photos.getRecent&api_key=${apiKey}&per_page=12&format=json&nojsoncallback=1&safe_search=3`)
+                response = await fetch(`${apiUrl}?method=flickr.photos.getRecent&api_key=${apiKey}&text=tree&per_page=12&format=json&nojsoncallback=1&safe_search=3`)
             }
             else {
                 response = await fetch(`${apiUrl}?method=flickr.photos.search&api_key=${apiKey}&text=${request}&per_page=12&format=json&nojsoncallback=1&safe_search=3`)
